@@ -1,0 +1,140 @@
+"hostgroup_id"
+"hostgroup_name"
+"hostgroup_alias"
+"timestamp"
+"created_by"
+"creation_time"
+"is_deleted"
+"updated_by"
+"is_default"
+"is_application"
+"application_url"
+"application_ip"
+"application_start_date"
+"application_end_date"
+"application_notification"
+
+
+
+SELECT * FROM `hostgroups_groups` as hgg
+JOIN (`groups` as g, `hostgroups` as hg, `users` as u, `application_service` as aps, `users_groups` as ugs)
+ON
+(
+        u.user_id = ugs.user_id
+        AND
+        ugs.group_id = g.group_id
+)
+        AND
+(
+        hg.hostgroup_id = hgg.hostgroup_id
+        AND
+        g.group_id = hgg.group_id
+        AND
+        aps.app_id = hgg.`hostgroup_id`
+)
+WHERE hg.is_application = 1
+
+============================================================================================================
+
+SELECT * FROM `hostgroups_groups` as hgg
+JOIN (`groups` as g, `hostgroups` as hg, `users` as u, `application_service` as aps, `users_groups` as ugs)
+ON
+(
+        u.user_id = ugs.user_id
+        AND
+        ugs.group_id = g.group_id
+        AND
+        hg.hostgroup_id = hgg.hostgroup_id
+        AND
+        g.group_id = hgg.group_id
+        AND
+        aps.app_id = hgg.`hostgroup_id`
+)
+WHERE hg.is_application = 1
+GROUP BY (aps.service_id and aps.app_id)
+
+============================================================================================================
+
+SELECT * FROM `hostgroups` as hg
+JOIN (`groups` as g,`hostgroups_groups` as hgg , `application_service` as aps, `users_groups` as ugs)
+ON
+(
+        ugs.group_id = g.group_id
+        AND
+        hg.hostgroup_id = hgg.hostgroup_id
+        AND
+        g.group_id = hgg.group_id
+        AND
+        aps.app_id = hgg.`hostgroup_id`
+)
+
+SELECT * FROM `hostgroups` as hg
+JOIN (`groups` as g,`hostgroups_groups` as hgg , `application_service` as aps, `users_groups` as ugs)
+ON
+(
+        ugs.group_id = hgg.group_id
+        AND
+        hg.hostgroup_id = hgg.hostgroup_id
+        AND
+        g.group_id = hgg.group_id
+        AND
+        aps.app_id = hgg.`hostgroup_id`
+)
+
+============================================================================================================
+
+SELECT hgg_ug_hg.hostgroup_id FROM 
+(SELECT hostgroups_groups.hostgroup_id as hostgroup_id from hostgroups_groups 
+        join (users_groups, hostgroups)
+        on
+        (
+                users_groups.group_id = hostgroups_groups.group_id
+                and
+                hostgroups.hostgroup_id = hostgroups_groups.hostgroup_id
+        )
+)as hgg_ug_hg
+join 
+(SELECT hostgroup_id FROM 
+        (Select application_service.app_id as hostgroup_id from application_service
+                join (hostgroups, device_type_service)
+                on 
+                (
+                        hostgroups.hostgroup_id = application_service.app_id
+                        and 
+                        device_type_service.service_id = application_service.service_id
+                )
+        ) as ace
+)as ap_sv_hg
+on (hgg_ug_hg.hostgroup_id = ap_sv_hg.hostgroup_id)
+
+
+==============
+
+{"app_name_2": [{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}]}
+
+
+{"app_name_2": [
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}, 
+
+{"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}
+]
+}
+
+{"app_name_2": {"customers": {"55b047bb-c167-11e3-9163-000c2993e2b7": {"application_url": "http://tm.com", "hostgroup_id": 16, "group_name": "Codes", "application_ip": "54.54.54.54", "hostgroup_alias": "Application 2", "group_id": "55b047bb-c167-11e3-9163-000c2993e2b7"}}}}<div class=error>Internal error: 'hostgroup_id' (<a href="app_cust_list_get_ajax.py?another_debug=1" target="_blank">Click to open traceback in new window </a>)</div>

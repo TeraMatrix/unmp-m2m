@@ -1,0 +1,35 @@
+Our Device Name is SB-Smart , Manufacturer : SoftbitOnline
+
+Latt. , Long - As usual,
+
+Phone number and Operator (to be filled by user)
+
+Monitoring Parameters :  We will discuss over call or in meeting (17  maximum but initially data will come for three : Temperature, Humidity, Voltage)
+
+Access Parameters : Username, Password, Device Id,
+
+Actions : 4 Buttons (like Reconcile in UNMP )
+
+------------------
+Service Details:
+------------------
+URL: http://54.201.58.16/fetchdata/fetchdata.asp
+
+DATA:
+	tx_uname = asharma@teramatrix.in
+	tx_pass  = teramatrix123
+	tx_logid = SB000482
+	tx_returnpath = http://54.201.58.16/fetchdata/fetchdata.asp
+
+
+SB000482;20.20;61;23.11;23.33;21.94;22.96;ON;ON;229.04;0.00;0.04;235.33;0.00;0.01;235.86;0.00;0.02
+
+ID, Temp, Humidity,Analog1,Analog2, Analog3, Analog4, digital1, digital2, digital3, digital4,
+
+Phase R --> Voltage, Current, Enrgy
+
+Phase B --> Voltage, Current, Enrgy
+
+Phase Y --> Voltage, Current, Enrgy
+
+http://www.softbitonline.com/senddata.asp?t1=asharma@teramatrix.in&t2=teramatrix123&t3=SB000482&t4=http://54.201.58.16/fetchdata/fetchdata.asp
