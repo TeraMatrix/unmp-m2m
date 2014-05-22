@@ -1376,127 +1376,238 @@ def app_group_conf_view(h):
     html.new_header("Application Customer Relation Management", "app_group_conf_view.py", all_btn, css_list, javascript_list)
 
     application_html = """
-    <table width="100%" class="main_tbl" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>
-            <table id="app_grp_configuration_table" class="content_tbl deatil_tbl" width="100%">
-                <tr>
-                    <td>
-                        <table width="100%">
-                            <tr>
-                                <td class="label">Select Customer</td>
-                                <td><select id="app_grp_configuration_select_customer" class="txt_bx">
-                                <option> Select </option>
-                                <option> Ford </option>
-                                <option value="Other Option">Option 2</option>
-                                </select></td>
+<table id="application_group_container_table" width="100%" class="main_tbl" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th id="application_group_main_heading" class="form_head fs16"><strong>Application Group Configuration</strong></th>
+  </tr>
+  <tr>
+    <td>
+        <table id="application_group_inner_container_table" class="content_tbl deatil_tbl" width="100%">
+            <!-- Select customer row -->
+            <tr>
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td class="label">Select Customer</td>
+                            <td><select id="application_group_select_customer" class="txt_bx">
+                                <option>Ford</option>
+                                <option>Volvo</option>
+                                <option>Smart Homes</option>
+                                <option>Tata Motors</option>
+                                <option>Godrej Secure</option>
+                                <option>Loxone</option>
+                            </select></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- End of Select customer row -->
+
+            <!-- Application Group List Table Row -->
+            <tr id="application_group_list_table_row">
+                <td>
+                    <!-- Application Group List Table Head Row -->
+                    <h3 class="width80">Application Group <a href="#"><img src="images/add-gray.png" alt="" class="add" border="0" align="right" id="add_application_group_button"></a></h3>
+                    <!-- End of Application Group List Table Head Row -->
+
+                    <!-- Application group List Table-->
+                    <table id="application_group_list_table" class="content_tbl" cellspacing="0" cellpadding="0" width="80%">
+                        <tr class="tbl_heading">
+                            <th>Application Group</th>
+                            <th>Service Profile</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tbody id="application_group_list_table_tbody" class="">
+                            <tr id="application_group_list_table_row_1">
+                                <td><input type="text" class="txt_bx dashed_border" /></td>
+                                <td><input type="text" class="txt_bx dashed_border" /></td>
+                                <td>
+                                    <table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td><center><a href="#"><img src="images/notification.png" class="view_application_group" alt="notification" border="0" height="14" width="14"></a></center></td>
+                                            <td><center><a href="#"><img src="images/pencil.png" class="edit_application_group" alt="edit" border="0" height="20" width="20"></a></center></td>
+                                            <td><center><a href="#"><img src="images/delete.png" class="delete_application_group" alt="edit" border="0" height="12" width="12"></a></center></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr style="display:none;">
-                    <td>
-                        <h3 class="width80">Existing Application Group <a href="#"><img src="images/add-gray.png" alt="" class="add" border="0" align="right" id="addGroupImage"></a></h3>
-                        <table id="exite_appgrp_tbl" class="content_tbl" cellspacing="0" cellpadding="0" width="80%">
-                            <tr class="tbl_heading">
-                                <th>Application GRP</th>
-                                <th>Service Profile</th>
-                                <th>Action</th>
+                            <tr id="application_group_list_table_row_2">
+                                <td><input type="text" class="txt_bx dashed_border" /></td>
+                                <td><input type="text" class="txt_bx dashed_border" /></td>
+                                <td>
+                                    <table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td><center><a href="#"><img src="images/notification.png" class="view_application_group" alt="notification" border="0" height="14" width="14"></a></center></td>
+                                            <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="20" width="20"></a></center></td>
+                                            <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="12" width="12"></a></center></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
-                            <tbody class="exicting_app_grp">
-                                <tr>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td>
-                                        <table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0">
-                                            <tr>
-                                                <td><center><a href="#"><img src="images/notification.png" alt="notification" border="0" height="14" width="14"></a></center></td>
-                                                <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="20" width="20"></a></center></td>
-                                                <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="12" width="12"></a></center></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td>
-                                        <table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0">
-                                            <tr>
-                                                <td><center><a href="#"><img src="images/notification.png" alt="notification" border="0" height="14" width="14"></a></center></td>
-                                                <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="20" width="20"></a></center></td>
-                                                <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="12" width="12"></a></center></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td><input type="text" class="txt_bx dashed_border" /></td>
-                                    <td>
-                                        <table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0">
-                                            <tr>
-                                                <td><center><a href="#"><img src="images/notification.png" alt="notification" border="0" height="14" width="14"></a></center></td>
-                                                <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="20" width="20"></a></center></td>
-                                                <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="12" width="12"></a></center></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr style="display:none;">
-                    <td>
-                        <h3>Add New Application Group</h3>
-                        <table id="add_newapp_grp_tbl" class="content_tbl deatil_tbl" width="80%" cellspacing="0" cellpadding="0" border="0">
-                            <tr>
-                                <td class="label">App Group Name</td>
-                                <td><input type="text" class="txt_bx" /></td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Select Service Profile</td>
-                                <td><select id="add_new_app_grp_select_service_profile" class="txt_bx">
-                                <option value="Ford"> Ford </option>
-                                <option value="Option">Option</option>
-                                </select></td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Add Application</td>
-                                <td><select class="txt_bx"><option> Ford </option></select></td>
-                                <td><input type="button" class="btn addChildTr app_map_services" value="Add" /></td>
-                            </tr>
-                            <tr>
-                                <td class="label"><input type="text" class="dashed_border" /></td>
-                                <td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="label"><input type="text" class="dashed_border" /></td>
-                                <td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr class="findInnerHTML">
-                                <td class="label"><input type="text" class="dashed_border" /></td>
-                                <td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                    <td><input type="button" class="btn green" value="Save" id="add_new_app_grp_save" /> &nbsp; <input id="add_new_app_grp_cancel" type="button" class="btn red" value="Cancel" /></td>
-                </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-      </tr>
-    </table>
+                        </tbody>
+                    </table>
+                    <!-- End of Application group List Table-->
+                </td>
+            </tr>
+            <!-- End of Application Group List Table Row -->
+
+
+            <!-- New Application Group Row -->
+            <tr id="create_new_application_group_row">
+                <td>
+                    <h3>Add New Application Group</h3>
+                    <table id="create_new_application_group_table" class="content_tbl deatil_tbl" width="80%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td class="label">Enter App Group Name: </td>
+                            <td><input id="new_application_group_name" type="text" class="txt_bx" /></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Select Service Profile: </td>
+                            <td>
+                                <select id="new_application_group_service_profile" class="txt_bx">
+                                </select>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr id="add_new_application_row">
+                            <td class="label">Add Application: </td>
+                            <td>
+                                <select id="new_application_group_application" class="txt_bx">
+                                </select>
+                            </td>
+                            <td><input type="button" id="add_application_service" class="btn" value="Add" /></td>
+                        </tr>
+                        <!-- <tr>
+                            <td class="label"><input type="text" class="dashed_border" /></td>
+                            <td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td>
+                            <td>&nbsp;</td>
+                        </tr> -->
+                        <tr>
+                           <td>
+                                <input type="button" class="btn green" value="Save" id="create_new_application_group_button" /> &nbsp;
+                                <input id="cancel_new_application_group_button" type="button" class="btn red" value="Cancel" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- End of New Application Group Row -->
+
+
+            <!-- View Application Group Row -->
+            <tr id="view_application_group_row">
+                <td>
+                    <h3>View Application Group</h3>
+                    <table id="view_application_group_table" class="content_tbl deatil_tbl" width="80%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td class="label">App Group Name: </td>
+                            <td><input id="view_selected_application_group_name" type="text" class="txt_bx" readonly /></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Service Profile: </td>
+                            <td>
+                                <select id="view_selected_application_group_service_profile" class="txt_bx" disabled>
+                                    <option></option>
+                                    <option value="Ford_LBS01">Ford_LBS01</option>
+                                    <option value="Ford_VS01">Ford_VS01</option>
+                                    <option value="Volvo_LBS01">Volvo_LBS01</option>
+                                    <option value="Volvo_VS01">Volvo_VS01</option>
+                                    <option value="Smart Homes_LBS01">Smart Homes_LBS01</option>
+                                    <option value="Smart Homes_VS01">Smart Homes_VS01</option>
+                                    <option value="Tata Motors_LBS01">Tata Motors_LBS01</option>
+                                    <option value="Tata Motors_VS01">Tata Motors_VS01</option>
+                                    <option value="Godrej Secure_LBS01">Godrej Secure_LBS01</option>
+                                    <option value="Godrej Secure_VS01">Godrej Secure_VS01</option>
+                                    <option value="Loxone_LBS01">Loxone_LBS01</option>
+                                    <option value="Loxone_VS01">Loxone_VS01</option>
+                                </select>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr id="view_application_row">
+                            <td class="label">Applications: </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <!-- <td>
+                                <select class="txt_bx">
+                                    <option> Ford </option>
+                                </select>
+                            </td>
+                            <td><input type="button" class="btn add_application_service" value="Add" /></td> -->
+                        </tr>
+                        <tr>
+                           <td>
+                                <input type="button" class="btn green" value="Close" id="close_viewing_application_group_button" /> &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- End of View Application Group Row -->
+
+
+            <!-- Edit Application Group Row -->
+            <tr id="edit_application_group_row">
+                <td>
+                    <h3>Edit Application Group</h3>
+                    <table id="edit_application_group_table" class="content_tbl deatil_tbl" width="80%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td class="label">Enter App Group Name: </td>
+                            <td><input id="updated_application_group_name" type="text" class="txt_bx" /></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Select Service Profile: </td>
+                            <td>
+                                <select id="updated_application_group_service_profile" class="txt_bx">
+
+                                </select>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr id="edit_application_row">
+                            <td class="label">Add Application: </td>
+                            <td>
+                                <select id="updated_application_group_applications" class="txt_bx">
+                                    
+                                </select>
+                            </td>
+                            <td><input type="button" class="btn edit_add_new_application_service" value="Add" /></td>
+                        </tr>
+                        <!-- <tr>
+                            <td class="label"><input type="text" class="dashed_border" /></td>
+                            <td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td>
+                            <td>&nbsp;</td>
+                        </tr> -->
+                        <tr>
+                           <td>
+                                <input type="button" class="btn green" value="Update" id="update_application_group_button" /> &nbsp;
+                                <input id="cancel_update_application_group_button" type="button" class="btn red" value="Cancel" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- End of Edit Application Group Row -->
+
+
+
+        </table>
+    </td>
+  </tr>
+</table>
     """
     
     html.write(application_html)
+    html.write("""
+    <style type="text/css">
+        #application_group_list_table_row, #create_new_application_group_row, #view_application_group_row, #edit_application_group_row {
+            display: none;
+        }
+    </style>
+        """)
     html.write("""
         <script>
         app_group_conf_view();

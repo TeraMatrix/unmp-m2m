@@ -500,71 +500,74 @@ def customer_control_view(h):
     html.new_header("Customer Control Panel", "customer_control_view.py", all_btn, css_list, javascript_list)
 
     customer_html = """
-    <table width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0">
+        <table id="customer_control_panel_main_table" width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>
+                    <th class="tbl_heading" colspan="2">Customer Control Panel</th>
+                </tr>           
+                <tr>
                     <td>
-                        <table width="100%" id="customer_control_panel_table" class="deatil_tbl" border="0" cellspacing="0" cellpadding="0">
+                        <table id="customer_control_panel_inner_table" width="100%" class="deatil_tbl" border="0" cellspacing="0" cellpadding="0">
                             <tbody>
-                                <tr id="select_customer_selectbox_tr">
+                                <tr id="c_c_p_select_customer_select_row">
                                     <td class="label">Select Customer</td>
                                     <td>
-                                        <select id="Customer_Control_Panel_Select_Customer" class="txt_bx">
-                                            <option> Select </option>
+                                        <select id="c_c_p_select_customer_select" class="txt_bx">
+                                            <option>Select Customer</option>
                                             <option>Ford</option>
                                             <option>Option2</option>
-                                        </select></td>
+                                        </select>
+                                    </td>
                                 </tr>
-                                <tr id="selected_customer_name_tr" style="display:none;">
+                                <tr id="c_c_p_selected_customer_title_tr" style="display:none;">
                                     <td colspan="2" class="label">
                                         <strong>Ford :</strong>
                                     </td>
                                 </tr>
-                                <tr id="subscription_number_tr" style="display:none;">
-                                    <td>Subscription number:</td>
+                                <tr id="c_c_p_subscription_number_tr" style="display:none;">
+                                    <td class="label">Subscription number:</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border subscriptionNumber"></td>
+                                        <input id="c_c_p_subscriptionNumber" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
                                 <tr id="contact_person_name_tr" style="display:none;">
-                                    <td>Contact Person Name</td>
+                                    <td class="label">Contact Person Name</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border contactPersonName"></td>
+                                        <input id="c_c_p_contactPersonName" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
                                 <tr id="email_id_tr" style="display:none;">
-                                    <td>Email</td>
+                                    <td class="label">Email</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border email"></td>
+                                        <input id="c_c_p_email" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
                                 <tr id="portal_id_tr" style="display:none;">
-                                    <td>Portal  ID</td>
+                                    <td class="label">Portal  ID</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border portalId"></td>
+                                        <input id="c_c_p_portalId" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
                                 <tr id="portal_link_tr" style="display:none;">
-                                    <td>Portal  Link</td>
+                                    <td class="label">Portal  Link</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border portalLink"></td>
+                                        <input id="c_c_p_portalLink" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
                                 <tr id="portal_theme_tr" style="display:none;">
-                                    <td>Portal Theme</td>
+                                    <td class="label">Portal Theme</td>
                                     <td>
-                                        <input type="text" value="" class="txt_bx dashed_border portalTheme"></td>
+                                        <input id="c_c_p_portalTheme" type="text" value="" class="txt_bx dashed_border"></td>
                                 </tr>
-                                <tr id="user_details_table_container_tr" style="display:none;">
+                                <tr id="c_c_p_user_details_table_row" style="display:none;">
                                     <td colspan="2">
-                                        <table class="content_tbl" id="user_details_table" border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
+                                        <table class="content_tbl" id="c_c_p_user_details_table" border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
                                             <tbody>
-                                                <tr>
+                                                <tr id="c_c_p_user_details_header_row">
                                                     <th class="cust_detail">User Details</th>
                                                     <th class="aling_right" colspan="5">
                                                         <input type="button" id="manage_user_details" class="btn add" value="Manage">
-                                                        <a id="add_user_details_row" class="addChildTr" href="" style="display:none;">
+                                                        <a id="add_c_c_p_user_details_row" class="addChildTr" href="" style="display:none;">
                                                             <img class="add" border="0" align="right" alt="" src="images/add-gray.png">
                                                         </a>
                                                     </th>
                                                 </tr>
-                                                <tr>
-                                                <tr><td colspan="6"></td></tr>
+                                                <!-- <tr>
                                                     <td class="label">User Name</td>
                                                     <td>
                                                         <input type="text" value="User1" class="txt_bx" readonly=""></td>
@@ -596,8 +599,8 @@ def customer_control_view(h):
                                                     <td>Email</td>
                                                     <td>
                                                         <input type="text" value="a@e.com" class="txt_bx" readonly=""></td>
-                                                </tr>
-                                                <tr id="user_details_table_save_tr" style="display: none;">
+                                                </tr> -->
+                                                <tr id="c_c_p_user_details_table_save_tr" style="display: none;">
                                                     <td colspan="9" class="saveButtonTd">
                                                         <input id="user_details_table_save_button" type="button" value="Save" style="float: right; width: 80px;">
                                                     </td>
@@ -606,29 +609,28 @@ def customer_control_view(h):
                                         </table>
                                     </td>
                                 </tr>
-                                <tr style="display:none;">
+                                <tr id="c_c_p_service_profile_table_row" style="display:none;">
                                     <td colspan="9">
-                                        <table id="service_profile_table" class="content_tbl" border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
+                                        <table id="c_c_p_service_profile_table" class="content_tbl" border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
                                             <tbody>
-                                                <tr>
+                                                <tr id="c_c_p_service_profle_select_row">
                                                     <th colspan="5" class="label">Service Profile</th>
                                                 </tr>
                                                 <tr><td colspan="6"></td></tr>
                                                 <tr>
                                                     <td colspan="5"><span>Select a Profile </span>
                                                         <select id="service_profile_profile_select" class="txt_bx">
-                                                            <option> Select </option>
                                                             <option>Ford</option>
                                                             <option>Option2</option>
                                                         </select>
                                                     </td>
                                                 </tr>
-                                                <tr style="display:none;">
+                                                <tr id="c_c_p_device_type_row" style="display:none;">
                                                     <td></td>
                                                     <td width="49%" valign="top">
-                                                        <table id="device_type_services_table" class="content_tbl exicting_app_grp" width="100%" align="left" cellpadding="0" cellspacing="0">
+                                                        <table id="c_c_p_device_type_services_table" class="content_tbl exicting_app_grp" width="100%" align="left" cellpadding="0" cellspacing="0">
                                                             <tbody>
-                                                                <tr>
+                                                             <!--    <tr>
                                                                     <th>Device Type</th>
                                                                     <th>Services</th>
                                                                 </tr>
@@ -643,7 +645,7 @@ def customer_control_view(h):
                                                                 <tr>
                                                                     <td>HIDAccess_ford</td>
                                                                     <td>04<input type="button" class="btn" style="visibility:hidden" value="hidden" /></td>
-                                                                </tr>
+                                                                </tr> -->
                                                             </tbody>
                                                         </table>
                                                     </td>
@@ -652,9 +654,9 @@ def customer_control_view(h):
                                                         <table class="content_tbl exicting_app_grp" width="100%" align="right" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th>Subscribed Application</th>
-                                                                    <th>Status</th>
-                                                                    <th>Action</th>
+                                                                    <th width="50%;">Subscribed Application</th>
+                                                                    <th width="22%;">Status</th>
+                                                                    <th width="28%;">Action</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Vehicle Tracking</td>
@@ -885,56 +887,68 @@ def customer_device_service_view(h):
     customer_html = """
     <table width="100%" class="main_tbl" border="0" cellspacing="0" cellpadding="0">
   <tr>
+    <th class="form_head fs16"><strong>Customer Device Services Profiling</strong></th>
+  </tr>
+  <tr>
     <td>
       <!-- select customer tbl -->
       <table id="propiling_tbl" width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0">
           <tr>
+<!--            <th class="tbl_heading">Lorem ipsum</th>-->
+          </tr>
+          <tr>
             <td>
-                <table class="deatil_tbl" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td class="label">Select Customer</td>
-                    <td>&nbsp;</td>
-                    <td colspan="3">
-                    <select class="txt_bx" id="service_profile_select_customer_select">
-                    <option>Ford</option>
-                    <option>Other</option>
-                    
-                    </select>
-                    </td>
+                <!-- Select Customer Table -->
+                <table id="selected_customer_details_table" class="deatil_tbl" border="0" cellspacing="0" cellpadding="0">
+                    <!-- Select Customer Select Box Row -->
+                    <tr id="customer_device_profile_select_customer_row">
+                        <td class="label">Select Customer</td>
+                        <td>&nbsp;</td>
+                        <td colspan="3">
+                            <select class="txt_bx" id="service_profile_select_customer_select">
+                                <option>Ford</option>
+                                <option>Volvo</option>
+                                <option>Tata Motors</option>
+                                <option>Smart Homes</option>
+                                <option>Godrej Secure</option>
+                                <option>Loxone</option>
+                            </select>
+                        </td>
                   </tr>
-                  <tr>
+                  <tr id="selected_customer_name_row" class="selected_customer_details_info" >
                     <td class="label">Customer :</td>
                     <td>&nbsp;</td>
-                    <td><input type="text" value="" class="txt_bx dashed_border customer_name" /></td>
+                    <td><input type="text" value="" class="txt_bx dashed_border" readonly /></td>
                     <td>&nbsp;</td>
-                    <td><input type="button" value="Manage" class="btn orange" /></td>
+                    <td><input type="button" value="Manage" class="btn orange" readonly /></td>
                   </tr>
-                  <tr>
+                  <tr id="selected_customer_portalID_row" class="selected_customer_details_info">
                     <td class="label">Portal ID</td>
                     <td>&nbsp;</td>
-                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border portal_Id" /></td>
+                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border" readonly/></td>
                   </tr>
-                  <tr>
+                  <tr id="selected_customer_portalLink_row" class="selected_customer_details_info">
                     <td class="label">Portal Link</td>
                     <td>&nbsp;</td>
-                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border portal_Link" /></td>
+                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border" readonly/></td>
                   </tr>
-                  <tr>
+                  <tr id="selected_customer_colorTheme_row" class="selected_customer_details_info">
                     <td class="label">Color Theme</td>
                     <td>&nbsp;</td>
-                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border color_theme" /></td>
+                    <td colspan="3"><input type="text" value="" class="txt_bx dashed_border" readonly/></td>
                   </tr>
                 </table>
+                <!-- End of Select Customer Table -->
             </td>
           </tr>
       </table>
       <!-- end of select customer tbl -->
       
       <!-- service profile tbl -->
-      <table id="service_profile_tbl" width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0" style="display:none;">
+      <table id="customer_device_service_profile_tbl" width="100%" class="content_tbl" border="1" cellspacing="0" cellpadding="0">
         <thead>
             <tr>
-                <th align="right" colspan="6">Add New Service Profile <a href="#" id="new_profile_name_add_link"><img class="add" src="images/add-gray.png" align="right" alt="" border="0" /></a></th>
+                <th align="right" colspan="6">Service Profile <a href="#" id="new_profile_name_add_link"><img class="add" src="images/add-gray.png" align="right" alt="" border="0" /></a></th>
             </tr>
             <tr class="tbl_heading">
                 <th>Service Profile</th>
@@ -945,72 +959,7 @@ def customer_device_service_view(h):
             </tr>
         </thead>
         <tbody class="tbl_content">
-            <tr>
-                <td>Ford-DG-VT_01</td>
-                <td>
-                    <table width="100%" class="inner_tbl" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td>Gramin GPS</td>
-                        </tr>
-                        <tr>
-                            <td>HID Access</td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table width="100%" class="inner_tbl" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>06</td>
-                        </tr>
-                    </table>
-                </td>
-                <td>55</td>
-                <td width="100" class="">
-                    <table width="100%" class="" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td><center><a href="#"><img src="images/notification.png" alt="notification" border="0" height="16" width="16" /></a></center></td>
-                            <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="22" width="22" /></a></center></td>
-                            <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="14" width="14" /></a></center></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td class="btm_bdr_none">Ford-DG-VT_01</td>
-                <td>
-                    <table width="100%" class="inner_tbl" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td>Gramin GPS</td>
-                        </tr>
-                        <tr>
-                            <td class="btm_bdr_none">HID Access</td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table width="100%" class="inner_tbl" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td class="btm_bdr_none">06</td>
-                        </tr>
-                    </table>
-                </td>
-                <td>55</td>
-                <td class="">
-                    <table width="100%" class="" cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td><center><a href="#"><img src="images/notification.png" alt="notification" border="0" height="16" width="16" /></a></center></td>
-                            <td><center><a href="#"><img src="images/pencil.png" alt="edit" border="0" height="22" width="22" /></a></center></td>
-                            <td><center><a href="#"><img src="images/delete.png" alt="edit" border="0" height="14" width="14" /></a></center></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+            
          </tbody>
       </table>
       <!-- end of service profile tbl -->
@@ -1022,7 +971,7 @@ def customer_device_service_view(h):
                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tr>
                         <td class="label"><strong>New Profile Name</strong></td>
-                        <td><input type="text" value="" class="txt_bx" /></td>
+                        <td><input id="new_profile_name_input" type="text" value="" class="txt_bx" /></td>
                     </tr>
                 </table>
             </td>
@@ -1035,30 +984,61 @@ def customer_device_service_view(h):
                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tr>
                         <td class="group_tbl" valign="top">
-                <h3>Device Group 
-                    <a id="add_device_group" href="#"><img src="images/add-gray.png" alt="" border="0" align="right" /></a>
-                </h3>
+                <h3>Device Group <a href="#"><img src="images/add-gray.png" alt="" border="0" align="right" /></a></h3>
                     <table id="device_group_tbl" class="search_tbl" width="100%" cellspacing="0" border="0" cellpadding="0">
                         <tr>
-                            <td><input type="text" placeholder="Search Device Group" class="txt_bx" id="new_profile_name_device_grp_search" /></td>
+                            <td><input type="text" placeholder="Search Device Group" class="txt_bx device_group_search" id="new_profile_name_device_grp_search" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="scroll height_250">
-                                    <table cellspacing="0" cellpadding="0" border="0">
-                                        <tr>
-                                            <td><input type="checkbox" class="chk_bx device_grp_checkbox" value="Gramin" /></td>
-                                            <td>Gramin GPS -  Ford</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox" class="chk_bx device_grp_checkbox" value="Geodude" /></td>
-                                            <td>Geodude GPS -  Ford</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox" class="chk_bx device_grp_checkbox" value="Pikachu" /></td>
-                                            <td>Pikachu GPS -  Ford</td>
-                                        </tr>
-                                </table>
+                                    <table id="new_profile_table_groups_list" cellspacing="0" cellpadding="0" border="0">
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox" value="Garmin_GPSTracker_Ford" /></td>
+                                                      <td>Garmin_GPSTracker_Ford</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="Garmin_GPSTracker_Volvo" /></td>
+                                                      <td>Garmin_GPSTracker_Volvo</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="Axis_Cam_012" /></td>
+                                                      <td>Axis_Cam_012</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="Ubiquiti_Switch_001" /></td>
+                                                      <td>Ubiquiti_Switch_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="HID_AC_PD_006" /></td>
+                                                      <td>HID_AC_PD_006</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="HID_AC_023" /></td>
+                                                      <td>HID_AC_023</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="SBSmart_RTU4556_001" /></td>
+                                                      <td>SBSmart_RTU4556_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="NEC_Biomatrics_001" /></td>
+                                                      <td>NEC_Biomatrics_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="Radwin_Access Point_002" /></td>
+                                                      <td>Radwin_Access Point_002</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="D-Link DIR-600L_Router_001" /></td>
+                                                      <td>D-Link DIR-600L_Router_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      
+                                                      <td><input type="checkbox" class="chk_bx new_device_grp_checkbox"  value="RWE_SD_SH" /></td>
+                                                      <td>RWE_SD_SH</td>
+                                                  </tr>
+                                              </table>
                                 </div>
                             </td>
                         </tr>
@@ -1070,136 +1050,19 @@ def customer_device_service_view(h):
                     <table id="service_tbl" width="100%" class="search_tbl" cellspacing="0" border="0" cellpadding="0">
                         <tr>
                             <td>
-                                <input id="new_service_search_box" type="text" placeholder="Search Services" class="txt_bx srch_width" />
+                                <input id="new_service_search_box" type="text" placeholder="Search Services" class="txt_bx srch_width services_search_text_box" />
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="scroll height_250">
                                     <table id="service_tbl_inner" width="100%" cellpadding="0" cellspacing="0" border="0" >
-                                        <!-- <thead>
-                                            <tr>
-                                                <td colspan="2" class="fixed_tbl_head">Lorem ipsum</td>
-                                            </tr>
-                                        </thead> -->
-                                        <tbody>
-                                        <!-- <tr>
-                                                <td colspan="2" class="fixed_tbl_head">Lorem ipsum</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2" class="fixed_tbl_head">Lorem ipsum</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr> -->
+                                        <tbody id="new_service_profile_tbody">
                                         </tbody>
                                 </table>
                                 </div>
                             </td>
                         </tr>
-                        <!--<tr>
-                            <td>
-                                <div class="scroll height_120">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <td class="fixed_tbl_head">Lorem ipsum</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2">&nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                                <td>Gramin GPS -  Ford</td>
-                                            </tr>
-                                        </tbody>
-                                </table>
-                                </div>
-                            </td>
-                        </tr>-->
                     </table>
                 </td>       
                     </tr>
@@ -1212,54 +1075,77 @@ def customer_device_service_view(h):
                     <table id="platform_service_tbl" cellspacing="0" cellpadding="0" width="100%" class="content_tbl">
                         <tr>
                             <td colspan="2">
-                                <input type="text" id="platform_services_search" placeholder="Search Services" class="txt_bx" />    
+                                <input type="text" id="platform_services_search" placeholder="Search Services" class="txt_bx platform_services_search" />   
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 <div class="scroll height_120">
-                                <table id="platform_search_table" class="deatil_tbl pltfrm_tbl" width="100%" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Dolor Amit" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Dolor Amit" class="txt_bx dashed_border" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Dolor Amit" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                        <td><input type="checkbox" class="chk_bx" value="" /></td>
-                                        <td><input type="text" value="Lorem Ipsum" class="txt_bx dashed_border" /></td>
-                                    </tr>
-                                </table>
+                                <table id="new_services_platform_table" class="deatil_tbl pltfrm_tbl" width="100%" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="AlarmService" /></td>
+                                          <td><input type="text" value="AlarmService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DataService"  /></td>
+                                          <td><input type="text" value="DataService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DataItemService"  /></td>
+                                          <td><input type="text" value="DataItemService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceService" /></td>
+                                          <td><input type="text" value="DeviceService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceAssociationSevice" /></td>
+                                          <td><input type="text" value="DeviceAssociationSevice" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DevicePropertiesService" /></td>
+                                          <td><input type="text" value="DevicePropertiesService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="EventService"  /></td>
+                                          <td><input type="text" value="EventService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="ExpressionRuleService"  /></td>
+                                          <td><input type="text" value="ExpressionRuleService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="General"  /></td>
+                                          <td><input type="text" value="General" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="GeofenceService"  /></td>
+                                          <td><input type="text" value="GeofenceService" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="MobileLocationService"  /></td>
+                                          <td><input type="text" value="MobileLocationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="NotificationService"  /></td>
+                                          <td><input type="text" value="NotificationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="UserGroupService" /></td>
+                                          <td><input type="text" value="UserGroupService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="ExtObjectService" /></td>
+                                          <td><input type="text" value="ExtObjectService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="addDevice" /></td>
+                                          <td><input type="text" value="addDevice" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceConfigurationService"  /></td>
+                                          <td><input type="text" value="DeviceConfigurationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="UserRoleService" /></td>
+                                          <td><input type="text" value="UserRoleService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="AuditLog"  /></td>
+                                          <td><input type="text" value="AuditLog" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="addPrivileges" /></td>
+                                          <td><input type="text" value="addPrivileges" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="getAssignedPrivileges" /></td>
+                                          <td><input type="text" value="getAssignedPrivileges" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DeleteDevice" /></td>
+                                          <td><input type="text" value="DeleteDevice" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="EventSubscription" /></td>
+                                          <td><input type="text" value="EventSubscription" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="SessionDetailService" /></td>
+                                          <td><input type="text" value="SessionDetailService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="tpsConsumption" /></td>
+                                          <td><input type="text" value="tpsConsumption" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="bandwidthConsumption" /></td>
+                                          <td><input type="text" value="bandwidthConsumption" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                  </table>
                                 </div>
                             </td>
                         </tr>
@@ -1271,11 +1157,224 @@ def customer_device_service_view(h):
         </tr>
       </table>
       <!-- end of service profile tbl -->
+        
+        
+        
+        <!-- View profile tbl -->
+      <table id="view_profile_table" width="100%" class="content_tbl deatil_tbl" cellspacing="0" cellpadding="0" border="0" >
+          <tr>
+              <td colspan="2">
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                          <td class="label"><strong>Profile Name: </strong></td>
+                          <td><input id="view_profile_name_text" type="text" value="" class="txt_bx" /></td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="2" class="dashed_border">Select Device Group and Map Services</td>
+          </tr>
+          <tr class="group_wrp">
+              <td colspan="2">
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                          <td class="group_tbl" valign="top">
+                              <h3>Device Group</h3>
+                              <table id="view_device_group_tbl" class="search_tbl" width="100%" cellspacing="0" border="0" cellpadding="0">
+                                  <tr>
+                                      <td><input type="text" placeholder="Search Device Group" class="txt_bx device_group_search" id="view_profile_name_device_grp_search" /></td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <div class="scroll height_250">
+                                              <table cellspacing="0" cellpadding="0" border="0">
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="Garmin_GPSTracker_Ford" /></td>
+                                                      <td>Garmin_GPSTracker_Ford</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="Garmin_GPSTracker_Volvo" /></td>
+                                                      <td>Garmin_GPSTracker_Volvo</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="Axis_Cam_012" /></td>
+                                                      <td>Axis_Cam_012</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="Ubiquiti_Switch_001" /></td>
+                                                      <td>Ubiquiti_Switch_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="HID_AC_PD_006" /></td>
+                                                      <td>HID_AC_PD_006</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="HID_AC_023" /></td>
+                                                      <td>HID_AC_023</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="SBSmart_RTU4556_001" /></td>
+                                                      <td>SBSmart_RTU4556_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="NEC_Biomatrics_001" /></td>
+                                                      <td>NEC_Biomatrics_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="Radwin_Access Point_002" /></td>
+                                                      <td>Radwin_Access Point_002</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="D-Link DIR-600L_Router_001" /></td>
+                                                      <td>D-Link DIR-600L_Router_001</td>
+                                                  </tr>
+                                                  <tr>
+                                                      
+                                                      <td><input type="checkbox" class="chk_bx device_grp_checkbox" onclick="return false" value="RWE_SD_SH" /></td>
+                                                      <td>RWE_SD_SH</td>
+                                                  </tr>
+                                              </table>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                          <td>&nbsp;</td>
+                          <td class="group_tbl" valign="top">
+                              <h3>Services</h3>
+                              <table id="service_tbl" width="100%" class="search_tbl" cellspacing="0" border="0" cellpadding="0">
+                                  <tr>
+                                      <td>
+                                          <input id="new_service_search_box" type="text" placeholder="Search Services" class="txt_bx srch_width services_search_text_box" />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <div class="scroll height_250">
+                                              <table id="service_tbl_inner" width="100%" cellpadding="0" cellspacing="0" border="0" >
+                                                  <tbody id="view_service_table">
+                                                      
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="2">
+                  <h3>Platform Services</h3>
+                  <table id="platform_service_tbl" cellspacing="0" cellpadding="0" width="100%" class="content_tbl">
+                      <tr>
+                          <td colspan="2">
+                              <input type="text" id="platform_services_search" placeholder="Search Services" class="txt_bx platform_services_search" /> 
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="2">
+                              <div class="scroll height_120">
+                                  <table id="" class="deatil_tbl pltfrm_tbl" width="100%" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="AlarmService" onclick="return false" checked/></td>
+                                          <td><input type="text" value="AlarmService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DataService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="DataService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DataItemService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="DataItemService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceService" onclick="return false" /></td>
+                                          <td><input type="text" value="DeviceService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceAssociationSevice" onclick="return false" /></td>
+                                          <td><input type="text" value="DeviceAssociationSevice" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DevicePropertiesService" onclick="return false" /></td>
+                                          <td><input type="text" value="DevicePropertiesService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="EventService" checked onclick="return false" /></td>
+                                          <td><input type="text" value="EventService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="ExpressionRuleService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="ExpressionRuleService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="General" onclick="return false" checked /></td>
+                                          <td><input type="text" value="General" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="GeofenceService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="GeofenceService" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="MobileLocationService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="MobileLocationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="NotificationService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="NotificationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="UserGroupService" onclick="return false" /></td>
+                                          <td><input type="text" value="UserGroupService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="ExtObjectService" onclick="return false" /></td>
+                                          <td><input type="text" value="ExtObjectService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="addDevice" onclick="return false" /></td>
+                                          <td><input type="text" value="addDevice" class="txt_bx dashed_border" /></td>
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceConfigurationService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="DeviceConfigurationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="UserRoleService" onclick="return false" /></td>
+                                          <td><input type="text" value="UserRoleService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="AuditLog" onclick="return false" checked /></td>
+                                          <td><input type="text" value="AuditLog" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="addPrivileges" onclick="return false" /></td>
+                                          <td><input type="text" value="addPrivileges" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="getAssignedPrivileges"onclick="return false"  /></td>
+                                          <td><input type="text" value="getAssignedPrivileges" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DeleteDevice" onclick="return false" /></td>
+                                          <td><input type="text" value="DeleteDevice" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="EventSubscription" onclick="return false" /></td>
+                                          <td><input type="text" value="EventSubscription" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="SessionDetailService" onclick="return false" /></td>
+                                          <td><input type="text" value="SessionDetailService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="tpsConsumption" onclick="return false" /></td>
+                                          <td><input type="text" value="tpsConsumption" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="bandwidthConsumption" onclick="return false" /></td>
+                                          <td><input type="text" value="bandwidthConsumption" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                  </table>
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="2">
+                  <input type="button" value="Close" id="close_view_profile_button" class="btn red" /> &nbsp; 
+          </tr>
+        </table>
+        <!-- end of view service profile tbl -->
+        
+        
+        
     </td>
   </tr>     
 </table>
     """
     html.write(customer_html)
+    html.write("""
+    <style>
+        .selected_customer_details_info, #customer_device_service_profile_tbl, #view_profile_table {
+            display: none;
+        }
+        
+        #customer_device_service_profile_tbl td {
+            padding: 4px;
+            text-indent: 5px;
+        }
+    </style>
+        """)
     html.write("""
         <script>
             add_device_groups();

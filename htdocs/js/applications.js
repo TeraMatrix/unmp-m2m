@@ -14,64 +14,291 @@ $(".map_services_delete").bind('click', function() {
    }
    
 });
-}
+};
 
-function app_group_conf_view()
-{
-    var fordGroup= [{'groupName': 'Ford Group 1', 'profileName': 'Ford Profile 1'}, {'groupName': 'Ford Group 2', 'profileName': 'Ford Profile 2'}, {'groupName': 'Ford Group 3', 'profileName': 'Ford Profile 3'}];
-    var otherOptionGroup= [{'groupName': 'Option Group 1', 'profileName': 'Option Profile 1'}, {'groupName': 'Option Group 2', 'profileName': 'Option Profile 2'}, {'groupName': 'Option Group 3', 'profileName': 'Option Profile 3'}];
-    
+function app_group_conf_view(){
 
-// $(document).ready(function() {
-    // createSelectBox('#app_grp_configuration_select_customer', function(selectBox) {
-        $("#app_grp_configuration_select_customer").change(function() {
-            var selectedValue= $(this).val();
-            var $tableTbodyTrReference= $("table#exite_appgrp_tbl tbody.exicting_app_grp > tr");
-            $tableTbodyTrReference.each(function(i, tr) {
-                if(selectedValue=== 'Ford') {
-                    $(tr).find('td:nth-child(1) input').val(fordGroup[i].groupName);
-                    $(tr).find('td:nth-child(2) input').val(fordGroup[i].profileName);
-                } else {
-                    $(tr).find('td:nth-child(1) input').val(otherOptionGroup[i].groupName);
-                    $(tr).find('td:nth-child(2) input').val(otherOptionGroup[i].profileName);
+    Array.prototype.removeValue = function(name, value){
+       var array = $.map(this, function(v,i){
+          return v[name] === value ? null : v;
+       });
+       this.length = 0; //clear original array
+       this.push.apply(this, array); //push all elements except the one we want to delete
+        }
+
+
+    var main_Json= {
+    'Ford': [{'groupName': 'Ford_App_GRP1', 'profileName': 'Ford_LBS01', 'applications': ['Location Based Services', 'Fleet Management']}, {'groupName': 'Ford_App_GRP2', 'profileName': 'Ford_VS01', 'applications': ['Smart Home Monitoring', 'Automatic Meter Reading']}],
+    'Volvo': [{'groupName': 'Volvo_App_GRP1', 'profileName': 'Volvo_LBS01', 'applications': ['Location Based Services', 'Fleet Management']}, {'groupName': 'Volvo_App_GRP2', 'profileName': 'Volvo_VS01', 'applications': ['Tower Monitoring', 'Fleet Management']}],
+    'Smart Homes': [{'groupName': 'Smart Homes_App_GRP1', 'profileName': 'Smart Homes_LBS01', 'applications': ['Tower Monitoring', 'Fleet Management']}, {'groupName': 'Smart Homes_App_GRP2', 'profileName': 'Smart Homes_VS01', 'applications': ['Smart Home Monitoring', 'Automatic Meter Reading']}],
+    'Tata Motors': [{'groupName': 'Tata Motors_App_GRP1', 'profileName': 'Tata Motors_LBS01', 'applications': ['Location Based Services', 'Fleet Management']}, {'groupName': 'Tata Motors_App_GRP2', 'profileName': 'Tata Motors_VS01', 'applications': ['Vehicle Tracking System', 'Generator Monitoring System']}],
+    'Godrej Secure': [{'groupName': 'Godrej Secure_App_GRP1', 'profileName': 'Godrej Secure_LBS01', 'applications': ['Smart Home Monitoring', 'Automatic Meter Reading']}, {'groupName': 'Godrej Secure_App_GRP2', 'profileName': 'Godrej Secure_VS01', 'applications': ['Tower Monitoring', 'Fleet Management']}],
+    'Loxone': [{'groupName': 'Loxone_App_GRP1', 'profileName': 'Loxone_LBS01', 'applications': ['Automatic Meter Reading', 'Fleet Management']}, {'groupName': 'Loxone_App_GRP2', 'profileName': 'Loxone_VS01', 'applications': ['Smart Home Monitoring', 'Tower Monitoring']}]
+    };
+
+    var applicationsArray= [
+        {value: 'Location Based Services', text: 'Location Based Services'},
+        {value: 'Fleet Management', text: 'Fleet Management'},
+        {value: 'Smart Home Monitoring', text: 'Smart Home Monitoring'},
+        {value: 'Automatic Meter Reading', text: 'Automatic Meter Reading'},
+        {value: 'Tower Monitoring', text: 'Tower Monitoring'},
+        {value: 'Vehicle Tracking System', text: 'Vehicle Tracking System'},
+        {value: 'Generator Monitoring System', text: 'Generator Monitoring System'}
+    ];
+
+    var selectedValue;
+
+
+            //Get selected Value in the dropdown
+    $("#application_group_select_customer").change(function() {
+        selectedValue= $(this).val();
+        applicationsArray= [
+        {value: 'Location Based Services', text: 'Location Based Services'},
+        {value: 'Fleet Management', text: 'Fleet Management'},
+        {value: 'Smart Home Monitoring', text: 'Smart Home Monitoring'},
+        {value: 'Automatic Meter Reading', text: 'Automatic Meter Reading'},
+        {value: 'Tower Monitoring', text: 'Tower Monitoring'},
+        {value: 'Vehicle Tracking System', text: 'Vehicle Tracking System'},
+        {value: 'Generator Monitoring System', text: 'Generator Monitoring System'}
+    ];
+    //Get Group Selected from the main_Json according to the value selected in dropdown
+    var groupSelected= main_Json[selectedValue];
+        $("#application_group_list_table_row tbody#application_group_list_table_tbody tr.application_group_list_table_rows").remove();
+        var trString= '';
+    for(var k=0; k< groupSelected.length; k++) {
+        trString+= '<tr class="application_group_list_table_rows"><td><input type="text" class="txt_bx dashed_border" value="'+groupSelected[k].groupName+'" readonly/></td><td><input type="text" class="txt_bx dashed_border" value="'+groupSelected[k].profileName+'" readonly/></td><td><table width="100%" class="action_tbl" cellspacing="0" cellpadding="0" border="0"><tr><td><center><a href="#"><img src="images/notification.png" class="view_application_group" alt="notification" border="0" height="14" width="14"></a></center></td><td><center><a href="#"><img src="images/pencil.png" class="edit_application_group" alt="edit" border="0" height="20" width="20"></a></center></td><td><center><a href="#"><img src="images/delete.png" class="delete_application_group" alt="delete" border="0" height="12" width="12"></a></center></td></tr></table></td></tr>'
+    }
+        $("#application_group_list_table_row tbody#application_group_list_table_tbody").html(trString);
+        //Show the Division
+        $("tr#application_group_list_table_row").show();
+        $("tr#view_application_group_row").hide();
+        $("tr#edit_application_group_row").hide();
+        $("tr#create_new_application_group_row").hide();
+    });
+    //});
+
+
+    //View an Application Group
+    //$('body').on('click', '.view_application_group', function() {})
+    $('.view_application_group').live('click', function() {
+        
+        $("#edit_application_group_row").hide();
+        $("#create_new_application_group_row").hide();
+        var parentTr= $(this).closest('table').parent().parent();
+        var getApplicationGroupName= parentTr.find('td').first().find('input').val();
+        for(var i=0; i< main_Json[selectedValue].length; i++) {
+            if(main_Json[selectedValue][i]['groupName']=== getApplicationGroupName) {
+                $("#view_selected_application_group_name").val(main_Json[selectedValue][i]['groupName']);
+                $("#view_selected_application_group_service_profile").val(main_Json[selectedValue][i]['profileName']);
+                $("tr#view_application_group_row tr.view_map_services_row").remove();
+                var map_String= '';
+                for(var j=0; j< main_Json[selectedValue][i]['applications'].length; j++) {
+                    map_String+= '<tr class="view_map_services_row"><td class="label"><input type="text" value="'+main_Json[selectedValue][i]['applications'][j]+'" class="dashed_border" readonly/></td><td class="label"><a class="map_service" href="#">Map Service</a></td><td>&nbsp;</td></tr>';
                 }
-            });
+                $("tr#view_application_group_row tr#view_application_row").after(map_String);
+                $("#view_application_group_row").show();
+            }
+        }
+    });
 
-            $("table#app_grp_configuration_table").find('tr:nth-child(2)').show();
+    $("#close_viewing_application_group_button").click(function() {
+        $("#view_application_group_row").hide();
+    });
+
+
+    $("#add_application_group_button").click(function() {
+        
+        $("#edit_application_group_row").hide();
+        $("#view_application_group_row").hide();
+        
+        $("tr.new_application_group_map_service").remove();
+        
+        var $select2= $("#new_application_group_application");
+        $select2.find('option').remove();
+        
+        $(applicationsArray).each(function (index, o) {    
+            var $option = $("<option/>").attr("value", o.value).text(o.text);
+            $select2.append($option);
         });
 
-        // createSelectBox('#add_new_app_grp_select_service_profile', function() {});
+        var servicesValue= [];
+        for(var i=0; i< main_Json[selectedValue].length; i++) {
+            var seviceObject= {};
+            seviceObject['value']= main_Json[selectedValue][i]['profileName'];
+            seviceObject['text']= main_Json[selectedValue][i]['profileName'];
+            servicesValue.push(seviceObject);
+        }
+        
+        var $select = $('#new_application_group_service_profile');
+        $select.find('option').remove();
+        
+        $(servicesValue).each(function (index, o) {    
+            var $option = $("<option/>").attr("value", o.value).text(o.text);
+            $select.append($option);
+        });
+        $("tr#create_new_application_group_row").show();
+        
 
-    // });
 
-    function addButtonClickEvent() {
-        $("#addGroupImage").click(function(e) {
-            e.preventDefault();
-            $(this).unbind('click');
-            $("table#app_grp_configuration_table > tbody > tr:nth-child(3)").show();
-        });    
-    }
-
-    $("#add_new_app_grp_save").click(function() {
-        $("table#app_grp_configuration_table > tbody > tr:nth-child(3)").hide();
-        $('#addGroupImage').bind('click');
-        addButtonClickEvent()
     });
 
-    $("#add_new_app_grp_cancel").click(function() {
-        $("table#app_grp_configuration_table > tbody > tr:nth-child(3)").hide();
-        $('#addGroupImage').bind('click');
-        addButtonClickEvent();
+     $("#add_application_service").click(function() {
+            var selectedApplication= $("#new_application_group_application").val();
+
+            var map_tr_String= '<tr class="new_application_group_map_service"><td class="label"><input type="text" class="dashed_border" value="'+selectedApplication+'" readonly/></td><td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td><td>&nbsp;</td></tr>';
+            
+         applicationsArray.removeValue('text', selectedApplication);
+         var $select2= $("#new_application_group_application");
+         $select2.find('option').remove();
+         $(applicationsArray).each(function (index, o) {    
+             var $option = $("<option/>").attr("value", o.value).text(o.text);
+             $select2.append($option);
+         });
+         $("tr#add_new_application_row").after(map_tr_String);
+     });
+
+    $("#create_new_application_group_button").click(function() {
+        var newApplicationObject= {};
+        newApplicationObject['groupName']= $("#new_application_group_name").val();
+        newApplicationObject['profileName']= $("#new_application_group_service_profile").val();
+        newApplicationObject['applications']= [];
+        $('tr.new_application_group_map_service').each(function() {
+            newApplicationObject['applications'].push($(this).find('input').val());
+        });
+        main_Json[selectedValue].push(newApplicationObject);
+        $("#application_group_select_customer").trigger('change');
     });
 
-    addButtonClickEvent();
 
-    $('.app_map_services').click(function() {
-        halloMapServices();
+    var getApplicationGroupName;
+    //Bind Edit Button
+    $(".edit_application_group").live('click', function() {
+        $("#view_application_group_row").hide();
+        $("#create_new_application_group_row").hide();
+        //Find parent Tr
+        var parentTr= $(this).closest('table').parent().parent();
+        //Find Application Group Name
+        getApplicationGroupName= parentTr.find('td').first().find('input').val();
+        
+        for(var i=0; i< main_Json[selectedValue].length; i++) {
+            if(main_Json[selectedValue][i]['groupName']=== getApplicationGroupName) {
+                $("#updated_application_group_name").val(main_Json[selectedValue][i]['groupName']);
+                
+                var serviceValue= [];
+                for(var j=0; j< main_Json[selectedValue].length; j++) {
+                    var serviceOjbect= {};
+                    serviceOjbect['value']= main_Json[selectedValue][j]['profileName'];
+                    serviceOjbect['text']= main_Json[selectedValue][j]['profileName'];
+                    serviceValue.push(serviceOjbect);
+                }
+
+                var $select2= $("#updated_application_group_service_profile");
+                $select2.find('option').remove();
+                $(serviceValue).each(function (index, o) {    
+                    var $option = $("<option/>").attr("value", o.value).text(o.text);
+                    $select2.append($option);
+                });
+                
+                $select2.val(main_Json[selectedValue][i]['profileName']);
+                
+
+                
+                var map_String= '';
+                
+                for(var k=0; k< main_Json[selectedValue][i]['applications'].length; k++) {
+                    
+                    applicationsArray.removeValue('text', main_Json[selectedValue][i]['applications'][k]);
+                    
+                    map_String+= '<tr class="edit_map_services_row"><td class="label"><input type="text" value="'+main_Json[selectedValue][i]['applications'][k]+'" class="dashed_border" readonly/></td><td class="label"><a class="map_service" href="#">Map Service</a><a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td><td>&nbsp;</td></tr>';
+                }
+                var $select2= $("#updated_application_group_applications");
+                $select2.find('option').remove();
+                $(applicationsArray).each(function (index, o) {    
+                    var $option = $("<option/>").attr("value", o.value).text(o.text);
+                    $select2.append($option);
+                });
+                
+                $("tr#edit_application_group_row tr.edit_map_services_row").remove();
+                
+                $("tr#edit_application_group_row tr#edit_application_row").after(map_String);
+                
+                $("#edit_application_group_row").show();
+            }
+        }
+    });
+    //End Edit Button
+
+    $('.edit_add_new_application_service').live('click', function() {
+        var selectedValueinCombobox= $("#updated_application_group_applications").val();
+        var map_tr_String= '<tr class="edit_map_services_row"><td class="label"><input type="text" class="dashed_border" value="'+selectedValueinCombobox+'" readonly/></td><td class="label"><a class="map_service" href="#">Map Service</a> <a href="#" class="map_services_delete"><img class="add" src="images/delete.png" align="absmiddle" alt="delete" width="12" height="12" /></a></td><td>&nbsp;</td></tr>';
+            applicationsArray.removeValue('text', selectedValueinCombobox);
+        var $select2= $("#updated_application_group_applications");
+                $select2.find('option').remove();
+                $(applicationsArray).each(function (index, o) {    
+                    var $option = $("<option/>").attr("value", o.value).text(o.text);
+                    $select2.append($option);
+                });
+            $("tr#edit_application_row").after(map_tr_String);
     });
 
-    halloMapServices();
-// });
+
+    //Bind Delete Button
+    $('.delete_application_group').live('click', function() {
+        var userResponse= confirm("Are you sure you want to delete?");
+        if(userResponse) {
+            $("#view_application_group_row").hide();
+            $("#create_new_application_group_row").hide();
+            $("#edit_application_group_row").hide();
+            $(this).closest('tr.application_group_list_table_rows').remove();
+            
+        };
+    });
+    //End Delete Button 
+
+    //Bind Map Service Delete Button
+    $('.map_services_delete').live('click', function() {
+        var label= $(this).closest('tr').find('td').first().find('input').val();
+        var obj= {};
+        obj['value']= label;
+        obj['text']= label;
+        applicationsArray.push(obj);
+        var parentTr= $(this).closest('tr');
+        var $select;
+        if(parentTr.hasClass('new_application_group_map_service')) {
+            $select= $("#new_application_group_application");
+        } else {
+            $select= $("#updated_application_group_service_profile");
+        }
+        $select.find('option').remove();
+        $(applicationsArray).each(function (index, o) {    
+            var $option = $("<option/>").attr("value", o.value).text(o.text);
+            $select2.append($option);
+        });
+        $(this).closest('tr').remove();
+    });
+
+    $("#update_application_group_button").click(function() {
+        for(var j=0; j< main_Json[selectedValue].length; j++) {
+            if(main_Json[selectedValue][j]['groupName']=== getApplicationGroupName) {
+                main_Json[selectedValue][j]['groupName']= $("#updated_application_group_name").val();
+                main_Json[selectedValue][j]['profileName']= $("#updated_application_group_service_profile").val();
+                var hallo= [];
+                $('tr.edit_map_services_row').each(function() {
+                    hallo.push($(this).find('input').val());
+                });
+                main_Json[selectedValue][j]['applications']= hallo;
+            }
+        }
+        $("#application_group_select_customer").trigger('change');
+    });
+
+    $("#cancel_update_application_group_button").click(function() {
+        $("#edit_application_group_row").hide();
+    });
+
+    $("#cancel_new_application_group_button").click(function() {
+        $("#create_new_application_group_row").hide();
+    });
 
 }
 // 
