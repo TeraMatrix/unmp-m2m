@@ -300,14 +300,15 @@ def customer_add_view_new(h):
     
     css_list = common_elements["css_list"]
 
-    javascript_list = common_elements["javascript_list"]
+    javascript_list = ["js/commonFunctions.js"]
+    javascript_list += common_elements["javascript_list"]
 
     all_btn = common_elements["all_btn"]
 
     html.new_header("Add Customers", "customer_management.py", all_btn, css_list, javascript_list)
 
     customer_add_html = """
-        <table width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0">
+    <table width="100%" class="content_tbl" border="0" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
                 <th>Customer Details</th>
@@ -468,8 +469,8 @@ def customer_add_view_new(h):
                     </tbody></table>
                 </td>
               </tr>
-          </tbody></table>
-    
+          </tbody>
+    </table>
     """
     html.write(customer_add_html)
     html.write("""
