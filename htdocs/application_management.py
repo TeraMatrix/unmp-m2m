@@ -1386,6 +1386,7 @@ def app_group_conf_view(h):
                             <tr>
                                 <td class="label">Select Customer</td>
                                 <td><select id="app_grp_configuration_select_customer" class="txt_bx">
+                                <option> Select </option>
                                 <option> Ford </option>
                                 <option value="Other Option">Option 2</option>
                                 </select></td>

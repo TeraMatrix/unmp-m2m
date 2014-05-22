@@ -34,6 +34,25 @@ function addButtonClickEvent() {
     });    
 }
 
+function toggle_state(){
+    //Toggle Button
+  $(".toggleButton").click(function() {
+     var currentValue, previousTd;
+     currentValue= $(this).val();
+     previousTd= $(this).parent().prev();
+     if(currentValue=== 'Activate') {
+        previousTd.html('Active');
+        $(this).val('Deactivate');
+        $(this).removeClass('green').addClass('red');
+     } else {
+        previousTd.html('Inactive');
+        $(this).val('Activate');
+        $(this).removeClass('red').addClass('green');
+     }
+  });
+
+}
+
 function customer_device_service_view()
 {
     $(".addParentTable").click(function(event) {
@@ -52,22 +71,6 @@ function customer_device_service_view()
         $(tr).removeClass('findInnerHTML');
      });
      $trToAdd.last().after(innerHTMLSubString);
-  });
-
-  //Toggle Button
-  $("input[type='button'].toggleButton").click(function() {
-     var currentValue, previousTd;
-     currentValue= $(this).val();
-     previousTd= $(this).parent().prev();
-     if(currentValue=== 'Activate') {
-        previousTd.html('Active');
-        $(this).val('Deactivate');
-        $(this).removeClass('green').addClass('red');
-     } else {
-        previousTd.html('Inactive');
-        $(this).val('Activate');
-        $(this).removeClass('red').addClass('green');
-     }
   });
 
   halloMapServices();
@@ -188,11 +191,11 @@ function customer_device_service_view()
 
 function looper(parentEm, selectedEm, selectedEm2, attribute) {
    $(parentEm).find(selectedEm).each(function(i, textbox) {
-         $(textbox).prop('readonly', attribute);
+         $(textbox).attr('readonly', attribute);
       });
 
       $(parentEm).find(selectedEm2).each(function(i, textbox) {
-         $(textbox).prop('readonly', attribute);
+         $(textbox).attr('readonly', attribute);
       });
 }
 
@@ -246,6 +249,7 @@ var select_profile_details= {
                  $( "table#device_type_services_table tbody" ).html(trString);
               }
            }
+           toggle_state();
         });     
      // });
 

@@ -509,6 +509,7 @@ def customer_control_view(h):
                                     <td class="label">Select Customer</td>
                                     <td>
                                         <select id="Customer_Control_Panel_Select_Customer" class="txt_bx">
+                                            <option> Select </option>
                                             <option>Ford</option>
                                             <option>Option2</option>
                                         </select></td>
@@ -615,6 +616,7 @@ def customer_control_view(h):
                                                 <tr>
                                                     <td colspan="5"><span>Select a Profile </span>
                                                         <select id="service_profile_profile_select" class="txt_bx">
+                                                            <option> Select </option>
                                                             <option>Ford</option>
                                                             <option>Option2</option>
                                                         </select>
@@ -1032,7 +1034,9 @@ def customer_device_service_view(h):
                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tr>
                         <td class="group_tbl" valign="top">
-                <h3>Device Group <a href="#"><img src="images/add-gray.png" alt="" border="0" align="right" /></a></h3>
+                <h3>Device Group 
+                    <a id="add_device_group" href="#"><img src="images/add-gray.png" alt="" border="0" align="right" /></a>
+                </h3>
                     <table id="device_group_tbl" class="search_tbl" width="100%" cellspacing="0" border="0" cellpadding="0">
                         <tr>
                             <td><input type="text" placeholder="Search Device Group" class="txt_bx" id="new_profile_name_device_grp_search" /></td>
