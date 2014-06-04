@@ -480,24 +480,58 @@ $("#cancel_new_application_group_button").click(function() {
 });
 
 $('.map_service').live('click', function() {
-    $("#show_map_services_group_row").show();
-    var selectService= '';
-    if($(this).closest('tr').hasClass('view_map_services_row')) {
-        selectService= $("#view_selected_application_group_service_profile").val();
-        fillMapServicesList(selectService, false, 'view');
-    } else if ($(this).closest('tr').hasClass('new_application_group_map_service')) {
-        selectService= $("#new_application_group_service_profile").val();
-        fillMapServicesList(selectService);
-    } else {
-        selectService= $("#updated_application_group_service_profile").val();
-        fillMapServicesList(selectService);
-    }
-    
+   $("#show_map_services_group_row").show();
+   if($("#edit_application_group_row").css('display') !== 'none') {
+       $("#update_map_services_row_button").show();
+       $("#update_map_services_row_button").val('Update');
+   }
+   else {
+       $("#update_map_services_row_button").hide();
+   }
+
+   var selectService= '';
+   if($(this).closest('tr').hasClass('view_map_services_row')) {
+       selectService= $("#view_selected_application_group_service_profile").val();
+       fillMapServicesList(selectService, false, 'view');
+   } else if ($(this).closest('tr').hasClass('new_application_group_map_service')) {
+       selectService= $("#new_application_group_service_profile").val();
+       fillMapServicesList(selectService);
+   } else {
+       selectService= $("#updated_application_group_service_profile").val();
+       fillMapServicesList(selectService);
+   }
+   
 });
 
 $('#close_map_services_row_button').live('click', function() {
-    $("#show_map_services_group_row").hide();
+   $("#show_map_services_group_row").hide();
 });
+
+$("#update_map_services_row_button").live('click', function() {
+   var new_Object= {};
+   var last_Parent= '';
+   $("#show_map_services_row #show_map_services_list_table").find('tr').each(function(i, tr) {
+       if($(tr).hasClass('parent_tr')) {
+           var td= $(tr).find('td').html();
+           last_Parent= td;
+           new_Object[td]= [];
+       } else {
+           var input= $(tr).find('input[type="checkbox"]:checked');
+           if(input.length) {
+               new_Object[last_Parent].push(input.val());    
+           }
+       }
+   });
+   var selectedCustomer= $("#application_group_select_customer").val();
+   var selectedGroup = $("#updated_application_group_name").val();
+   $.each(main_Json[selectedCustomer], function(i, obj) {
+       if(obj.groupName=== selectedGroup) {
+           obj.services= new_Object;
+       }
+   });
+   $("#show_map_services_group_row").hide();
+});
+
 
 }
 // 

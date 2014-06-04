@@ -1653,7 +1653,8 @@ def app_group_conf_view(h):
                                 </tr>
                                 
                                 <tr>
-                                   <td>
+                                    <td>
+                                        <input type="button" class="btn" value="Update" id="update_map_services_row_button" style="display:none;" /> &nbsp;
                                         <input type="button" class="btn" value="Close" id="close_map_services_row_button" /> &nbsp;
                                     </td>
                                 </tr>
