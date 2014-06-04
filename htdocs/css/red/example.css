@@ -3856,3 +3856,299 @@ em {
 .width80 {
     width: 81%;
 }
+
+
+table, table tr td, table tr th {
+    text-align:left;
+}
+
+a{
+    color:#444;
+}
+
+a:hover {
+    text-decoration:none;
+    color:#666;
+}
+
+/*-- Form-1 --*/
+
+.content_tbl, textarea, .add_user_tbl {
+    border:1px solid #c5c5c5;
+    resize:none;
+    margin-top:10px;
+}
+
+.inner_tbl tr td, .tbl_content > tr:first-child > td:first-child, .tbl_content > tr:first-child > td:nth-child(4) {
+/*  border-bottom:1px solid #c5c5c5;*/
+}
+
+.btm_bdr_none {
+    border-bottom:0 !important;
+}
+
+.txt_bx {
+    border:1px solid #ddd;
+    padding:3px 2px;
+    width:180px;
+    text-indent:3px;
+    outline:none;
+    color:#555;
+}
+
+.form_head, .tbl_head {
+    padding:10px 0 0 0;
+}
+
+.content_tbl th {
+    padding:7px 0px;
+    border-bottom:1px solid #c5c5c5;
+    text-indent:5px;
+    text-transform:none;
+    background:#f7f7f7;
+}
+
+.deatil_tbl, .search_tbl {
+    padding:10px;
+}
+
+.search_tbl {
+    border:1px solid #c5c5c5;
+    padding:0 5px 0px 0
+}
+
+.labelhi {
+    width:150px;
+    /*padding:11px 0 0 0;*/
+}
+
+.label2 {
+    width:200px;
+}
+
+.tbl_heading th {
+    background:none;
+    border-right:1px solid #c5c5c5;
+}
+
+.tbl_heading th:last-child, .tbl_content > tr > td:last-child, .device_validity_tbl tr td:last-child, .action_tbl tr td, .exicting_app_grp tr td:last-child {
+    border-right:none;
+}
+
+.dashed_border {
+    border:none;
+    border-bottom:1px dashed #ddd;
+    outline:none;
+}
+
+.deatil_tbl td, .service_tbl td, .tbl_content, .individual_tbl tr td {
+    padding:5px 0;
+    text-indent:5px;
+}
+
+.tbl_content, .pltfrm_tbl {
+    padding:0px;
+}
+
+.inner_tbl td {
+    padding:7px;
+}
+
+.tbl_content > tr > td, .bdr_right, .exicting_app_grp td {
+    border-right:1px solid #c5c5c5;
+}
+
+.add {
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.group_tbl h3 {
+    margin:3px 0 8px 0;
+}
+
+.chk_bx {
+    margin:2px 0 0 0;
+}
+
+.scroll {
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.height_250 {
+    height:250px;
+}
+
+.height_120 {
+    height:120px;
+}
+
+.fixed_tbl_head {
+    background: #eee;
+    /*position: absolute;   
+    width: 27%;
+    margin-top: -2px;
+    margin-left:3px;*/
+}
+
+.group_wrp > td:first-child {
+    padding-right:50px;
+}
+
+.btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    text-shadow: 0px 0px 2px #161616;
+    background: #ea8000;
+    background: -moz-linear-gradient(top, #ea8000 0%, #d36f00 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea8000), color-stop(100%,#d36f00));
+    background: -webkit-linear-gradient(top, #ea8000 0%,#d36f00 100%);
+    background: -o-linear-gradient(top, #ea8000 0%,#d36f00 100%);
+    background: -ms-linear-gradient(top, #ea8000 0%,#d36f00 100%);
+    background: linear-gradient(to bottom, #ea8000 0%,#d36f00 100%);
+    -webkit-box-shadow: inset 0px 0px 0px 1px #f3a039;
+    box-shadow: inset 0px 0px 0px 1px #f3a039;
+    border: #cb761b 1px solid;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.btn:hover, .green:hover, .red:hover {
+    -webkit-box-shadow: 0px 0px 5px #f4a03a;
+    box-shadow: 0px 0px 5px #f4a03a;
+    outline:none;
+}
+.green {
+    text-shadow: 0px 0px 2px #161616;
+    background: #0fce29;
+    background: -moz-linear-gradient(top, #0fce29 0%, #15923c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0fce29), color-stop(100%,#15923c));
+    background: -webkit-linear-gradient(top, #0fce29 0%,#15923c 100%);
+    background: -o-linear-gradient(top, #0fce29 0%,#15923c 100%);
+    background: -ms-linear-gradient(top, #0fce29 0%,#15923c 100%);
+    background: linear-gradient(to bottom, #0fce29 0%,#15923c 100%);
+    -webkit-box-shadow: inset 0px 0px 0px 1px #6fde65;
+    box-shadow: inset 0px 0px 0px 1px #6fde65;
+    border: #007236 1px solid;
+}
+
+.red {
+    text-shadow: 0px 0px 2px #161616;
+    background: #FF4444;
+    background: -moz-linear-gradient(top, #FF4444 0%, #D30000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF4444), color-stop(100%,#D30000));
+    background: -webkit-linear-gradient(top, #FF4444 0%,#D30000 100%);
+    background: -o-linear-gradient(top, #FF4444 0%,#D30000 100%);
+    background: -ms-linear-gradient(top, #FF4444 0%,#D30000 100%);
+    background: linear-gradient(to bottom, #FF4444 0%,#D30000 100%);
+    -webkit-box-shadow: inset 0px 0px 0px 1px #DE6565;
+    box-shadow: inset 0px 0px 0px 1px #DE6565;
+    border: #D30000 1px solid;
+}
+
+.green:hover {
+    -webkit-box-shadow: 0px 0px 5px #0fce29;
+    box-shadow: 0px 0px 5px #0fce29;
+}
+
+.red:hover {
+    -webkit-box-shadow: 0px 0px 5px #D30000;
+    box-shadow: 0px 0px 5px #D30000;
+}
+
+.validity_tbl, .validity_tbl td {
+    padding-left:0;
+    text-indent:0;
+}
+
+.device_validity_tbl tr td {
+    border-right: 1px solid #c5c5c5;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.individual_tbl {
+    border:1px solid #c5c5c5;
+    border-left:none;
+    border-right:none;
+    margin-bottom:10px;
+}
+
+em {
+    padding-left:5px;
+}
+
+.map_service {
+    padding-left:74px;
+}
+
+.add_user_tbl {
+    margin-left:48px;
+}
+
+.endof_tbl {
+    margin-bottom:0px;
+    border-bottom:0;
+}
+
+.aling_right {
+    text-align:right;
+}
+/*-- FORM Customer Device Services Propiling --*/
+/*-- id for Customer Device Services Propiling --*/
+#propiling_tbl {
+}
+
+/*-- id for New Service Profile --*/
+#service_profile_tbl {
+}
+
+/*-- id for Select Device Group and Map Services --*/
+#device_group_tbl {
+}
+
+#service_tbl {
+}
+
+/*-- id for Platform Services --*/
+#platform_service_tbl {
+}
+/*-- END of FORM Customer Device Services Propiling --*/
+
+
+/*-- FORM Add Device Validitiy (For Customer) --*/
+/*-- id for Add New Application Group --*/
+#device_validity_tbl {
+}
+
+#exite_appgrp_tbl {
+}
+
+#add_newapp_grp_tbl {
+}
+/*-- END of FORM Add Device Validitiy (For Customer) --*/
+
+.width80 {
+    width: 81%;
+}
+
+
+
+
+ul.nav {
+
+}
+
+ul.nav li {
+    margin: 10px;
+    padding: 10px;
+}
+
+ul.nav li.active {
+    font-weight: bold;
+    text-decoration: underline;
+}

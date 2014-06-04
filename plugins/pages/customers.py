@@ -12,6 +12,7 @@ pagehandlers.update({
     "customer_delete_ajax" : customer_management.customer_delete_ajax,
     "customer_control_view" : customer_management.customer_control_view,
     "customer_device_service_view" : customer_management.customer_device_service_view,
+    "device_group_management_view": customer_management.device_group_management_view,
     })
 
 pagehandlers.update({

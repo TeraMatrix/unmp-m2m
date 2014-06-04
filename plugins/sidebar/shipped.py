@@ -1496,7 +1496,8 @@ def render_customers():
     return bulletlink("Customer Management", "customer_management.py") +\
             bulletlink("Customer Group Management", "customer_group_management.py") +\
             bulletlink("Customer Control Panel", "customer_control_view.py") +\
-            bulletlink("Device Service Group Management", "customer_device_service_view.py")
+            bulletlink("Device Service Group Management", "customer_device_service_view.py") +\
+            bulletlink("Device Group Management", "device_group_management_view.py")
 
 
 sidebar_snapins["customers"] = {

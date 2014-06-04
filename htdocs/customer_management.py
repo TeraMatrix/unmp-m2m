@@ -26,9 +26,13 @@ def header_buttons():
     add_btn = "<div class=\"header-icon\">\
     <a id='customer_add_view' href='customer_add_view.py'> \
         <img class=\"n-tip-image\" src=\"images/%s/round_plus.png\" id=\"add_customer\" \
-        style=\"width: 16px; height: 16px; margin: 6px 20px 6px 10px;\" original-title=\"Add Customer\" />\
+        style=\"width: 16px; height: 16px; margin: 6px 20px 6px 10px;\" original-title=\"Add Portal Customer\" />\
     </a>\
-    </div>" % theme
+    <a href='customer_add_view_old.py'> \
+        <img class=\"n-tip-image\" src=\"images/%s/round_plus.png\" id=\"add_customer_old\" \
+        style=\"width: 16px; height: 16px; margin: 6px 20px 6px 10px;\" original-title=\"Add Platform Customer\" />\
+    </a>\
+    </div>" % (theme, theme)
     header_btn = add_btn
     return header_btn
 
@@ -469,8 +473,8 @@ def customer_add_view_new(h):
                     </tbody></table>
                 </td>
               </tr>
-          </tbody>
-    </table>
+          </tbody></table>
+  
     """
     html.write(customer_add_html)
     html.write("""
@@ -513,9 +517,13 @@ def customer_control_view(h):
                                     <td class="label">Select Customer</td>
                                     <td>
                                         <select id="c_c_p_select_customer_select" class="txt_bx">
-                                            <option>Select Customer</option>
+                                            <option></option>
                                             <option>Ford</option>
-                                            <option>Option2</option>
+                                            <option>Volvo</option>
+                                            <option>Smart Homes</option>
+                                            <option>Tata Motors</option>
+                                            <option>Godrej Secure</option>
+                                            <option>Loxone</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -620,8 +628,7 @@ def customer_control_view(h):
                                                 <tr>
                                                     <td colspan="5"><span>Select a Profile </span>
                                                         <select id="service_profile_profile_select" class="txt_bx">
-                                                            <option>Ford</option>
-                                                            <option>Option2</option>
+                                                            
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -630,11 +637,11 @@ def customer_control_view(h):
                                                     <td width="49%" valign="top">
                                                         <table id="c_c_p_device_type_services_table" class="content_tbl exicting_app_grp" width="100%" align="left" cellpadding="0" cellspacing="0">
                                                             <tbody>
-                                                             <!--    <tr>
+                                                                 <tr id="c_c_p_device_type_services_table_head">
                                                                     <th>Device Type</th>
                                                                     <th>Services</th>
                                                                 </tr>
-                                                                <tr>
+                                                             <!--   <tr>
                                                                     <td>GarminGPS_ford</td>
                                                                     <td>09<input type="button" class="btn" style="visibility:hidden" value="hidden" /></td>
                                                                 </tr>
@@ -651,27 +658,12 @@ def customer_control_view(h):
                                                     </td>
                                                     <td></td>
                                                     <td width="49%" valign="top" align="right">
-                                                        <table class="content_tbl exicting_app_grp" width="100%" align="right" cellpadding="0" cellspacing="0">
+                                                        <table id="subscribed_Appication_table" class="content_tbl exicting_app_grp" width="100%" align="right" cellpadding="0" cellspacing="0">
                                                             <tbody>
-                                                                <tr>
+                                                                <tr id="subscribed_Appication_table_header">
                                                                     <th width="50%;">Subscribed Application</th>
                                                                     <th width="22%;">Status</th>
                                                                     <th width="28%;">Action</th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Vehicle Tracking</td>
-                                                                    <td>Active</td>
-                                                                    <td><input type="button" class="btn red toggleButton" value="Deactivate"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Video Surveillance</td>
-                                                                    <td>Active</td>
-                                                                    <td><input type="button" class="btn red toggleButton" value="Deactivate"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Access Control</td>
-                                                                    <td>Inactive</td>
-                                                                    <td><input type="button" class="btn green toggleButton" value="Activate"></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -691,75 +683,55 @@ def customer_control_view(h):
                                                                 <tr>
                                                                     <td>
                                                                         <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
+                                                                            <input type="checkbox" checked>
+                                                                            Alarm Services</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>
+                                                                            <input type="checkbox" checked>
+                                                                            Data Service</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
                                                                             <input type="checkbox">
-                                                                            Some text</label>
+                                                                            Mobile Location Configuration</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
                                                                             <input type="checkbox">
-                                                                            Some text</label>
+                                                                            Notification Service</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
+                                                                            <input type="checkbox" checked>
+                                                                            Geofence Service</label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <label>
                                                                             <input type="checkbox">
-                                                                            Some text</label>
+                                                                            Audit Log</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
                                                                             <input type="checkbox">
-                                                                            Some text</label>
+                                                                            Event Services</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
+                                                                            <input type="checkbox" checked>
+                                                                            Device Configuration Services</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
+                                                                            <input type="checkbox" checked>
+                                                                            DataItem Services</label>
                                                                     </td>
                                                                     <td>
                                                                         <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label>
-                                                                            <input type="checkbox">
-                                                                            Some text</label>
+                                                                            <input type="checkbox" checked>
+                                                                            General</label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr><td></td></tr>
@@ -780,63 +752,63 @@ def customer_control_view(h):
                                                     <th colspan="9" class="cust_detail">Customer Billing</th>
                                                 </tr>
                                                 <tr>
-                                                    <td width="35%" class="bdr_right" valign="top">
+                                                    <td width="50%" class="bdr_right" valign="top">
                                                         <table class="" border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td class="label">Billing Department:
+                                                                    <td class="label">Billing Determinant:
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" class="txt_bx dashed_border" value="TPS">
+                                                                        <input type="text" id="billingDept" class="txt_bx dashed_border" value="TPS">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Billing Cycle:
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" class="txt_bx dashed_border" value="Monthly">
+                                                                        <input type="text" id="billingCycle" class="txt_bx dashed_border" value="Monthly">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Billing Start Date:
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" class="txt_bx dashed_border" value="xx-xx-xxx">
+                                                                        <input type="date" id="billingStartDate" class="txt_bx dashed_border" value="xx-xx-xxx">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Billing Amount:
                                                                     </td>
                                                                     <td style="padding-right:10px;">
-                                                                        <input type="text" class="txt_bx dashed_border">
+                                                                        <input type="text" id="billingAmount" class="txt_bx dashed_border">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </td>
-                                                    <td width="35%" class="bdr_right" valign="top">
+                                                    <td width="50%" class="bdr_right" valign="top">
                                                         <table border="0" width="100%" align="center" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
                                                                     <td class="label" style="padding-left:5px; text-indent:0;">Amount for next billing cycle:</td>
                                                                     <td>
-                                                                        <input type="text" class="txt_bx dashed_border">
+                                                                        <input type="text" id="amountNext" class="txt_bx dashed_border">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Total Outstanding:
                                                                     </td>
                                                                     <td style="padding-right:10px;">
-                                                                        <input type="text" class="txt_bx dashed_border" value="Monthly">
+                                                                        <input type="text" id="totalOutstanding" class="txt_bx dashed_border" value="Monthly">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </td>
-                                                    <td width="30%">
+                                                   <!--  <td width="30%">
                                                         <p>App-wise TPS consumption(curremt month)</p>
                                                         <img height="150px" src="images/pie_chart.gif">
-                                                    </td>
+                                                    </td> -->
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -885,7 +857,8 @@ def customer_device_service_view(h):
     html.new_header("Device Service Group Management", "customer_device_service_view.py", all_btn, css_list, javascript_list)
 
     customer_html = """
-    <table width="100%" class="main_tbl" border="0" cellspacing="0" cellpadding="0">
+
+<table width="100%" class="main_tbl" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <th class="form_head fs16"><strong>Customer Device Services Profiling</strong></th>
   </tr>
@@ -1278,23 +1251,29 @@ def customer_device_service_view(h):
                       <tr>
                           <td colspan="2">
                               <div class="scroll height_120">
-                                  <table id="" class="deatil_tbl pltfrm_tbl" width="100%" cellspacing="0" cellpadding="0">
+                                  <table id="" class="deatil_tbl pltfrm_tbl" cellspacing="0" cellpadding="0">
                                       <tr>
                                           <td><input type="checkbox" class="chk_bx" value="AlarmService" onclick="return false" checked/></td>
                                           <td><input type="text" value="AlarmService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="DataService" onclick="return false" checked /></td>
                                           <td><input type="text" value="DataService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="NotificationService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="NotificationService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="DataItemService" onclick="return false" checked /></td>
                                           <td><input type="text" value="DataItemService" class="txt_bx dashed_border" /></td>
-                                          <td><input type="checkbox" class="chk_bx" value="DeviceService" onclick="return false" /></td>
-                                          <td><input type="text" value="DeviceService" class="txt_bx dashed_border" /></td>
-                                          <td><input type="checkbox" class="chk_bx" value="DeviceAssociationSevice" onclick="return false" /></td>
-                                          <td><input type="text" value="DeviceAssociationSevice" class="txt_bx dashed_border" /></td>
-                                          
                                       </tr>
                                       <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceService" onclick="return false" /></td>
+                                          <td><input type="text" value="DeviceService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="MobileLocationService" onclick="return false" checked /></td>
+                                          <td><input type="text" value="MobileLocationService" class="txt_bx dashed_border" /></td>
+                                          <td><input type="checkbox" class="chk_bx" value="DeviceAssociationSevice" onclick="return false" /></td>
+                                          <td><input type="text" value="DeviceAssociationSevice" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="DevicePropertiesService" onclick="return false" /></td>
                                           <td><input type="text" value="DevicePropertiesService" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                      <tr>
+                                          
                                           <td><input type="checkbox" class="chk_bx" value="EventService" checked onclick="return false" /></td>
                                           <td><input type="text" value="EventService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="ExpressionRuleService" onclick="return false" checked /></td>
@@ -1302,37 +1281,30 @@ def customer_device_service_view(h):
                                           <td><input type="checkbox" class="chk_bx" value="General" onclick="return false" checked /></td>
                                           <td><input type="text" value="General" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="GeofenceService" onclick="return false" checked /></td>
-                                          <td><input type="text" value="GeofenceService" class="txt_bx dashed_border" /></td>
-                                          
+                                          <td><input type="text" value="GeofenceService" class="txt_bx dashed_border" /></td>                                          
                                       </tr>
+
                                       <tr>
-                                          <td><input type="checkbox" class="chk_bx" value="MobileLocationService" onclick="return false" checked /></td>
-                                          <td><input type="text" value="MobileLocationService" class="txt_bx dashed_border" /></td>
-                                          <td><input type="checkbox" class="chk_bx" value="NotificationService" onclick="return false" checked /></td>
-                                          <td><input type="text" value="NotificationService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="UserGroupService" onclick="return false" /></td>
                                           <td><input type="text" value="UserGroupService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="ExtObjectService" onclick="return false" /></td>
                                           <td><input type="text" value="ExtObjectService" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="addDevice" onclick="return false" /></td>
                                           <td><input type="text" value="addDevice" class="txt_bx dashed_border" /></td>
-                                          
+                                          <td><input type="checkbox" class="chk_bx" value="UserRoleService" onclick="return false" /></td>
+                                          <td><input type="text" value="UserRoleService" class="txt_bx dashed_border" /></td>
                                       </tr>
                                       <tr>
                                           <td><input type="checkbox" class="chk_bx" value="DeviceConfigurationService" onclick="return false" checked /></td>
                                           <td><input type="text" value="DeviceConfigurationService" class="txt_bx dashed_border" /></td>
-                                          <td><input type="checkbox" class="chk_bx" value="UserRoleService" onclick="return false" /></td>
-                                          <td><input type="text" value="UserRoleService" class="txt_bx dashed_border" /></td>
-                                          <td><input type="checkbox" class="chk_bx" value="AuditLog" onclick="return false" checked /></td>
-                                          <td><input type="text" value="AuditLog" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="addPrivileges" onclick="return false" /></td>
                                           <td><input type="text" value="addPrivileges" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="getAssignedPrivileges"onclick="return false"  /></td>
                                           <td><input type="text" value="getAssignedPrivileges" class="txt_bx dashed_border" /></td>
-                                      </tr>
-                                      <tr>
                                           <td><input type="checkbox" class="chk_bx" value="DeleteDevice" onclick="return false" /></td>
                                           <td><input type="text" value="DeleteDevice" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                      <tr>
                                           <td><input type="checkbox" class="chk_bx" value="EventSubscription" onclick="return false" /></td>
                                           <td><input type="text" value="EventSubscription" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="SessionDetailService" onclick="return false" /></td>
@@ -1341,6 +1313,10 @@ def customer_device_service_view(h):
                                           <td><input type="text" value="tpsConsumption" class="txt_bx dashed_border" /></td>
                                           <td><input type="checkbox" class="chk_bx" value="bandwidthConsumption" onclick="return false" /></td>
                                           <td><input type="text" value="bandwidthConsumption" class="txt_bx dashed_border" /></td>
+                                      </tr>
+                                      <tr>
+                                          <td><input type="checkbox" class="chk_bx" value="AuditLog" onclick="return false" checked /></td>
+                                          <td><input type="text" value="AuditLog" class="txt_bx dashed_border" /></td>
                                       </tr>
                                   </table>
                               </div>
@@ -1383,6 +1359,186 @@ def customer_device_service_view(h):
         """)
     html.new_footer()
 #############################new form integration for customer device service profiling
+
+#############################BEGIN: new form integration for device group management
+def device_group_management_view(h):
+    global html
+    html = h
+
+    common_elements = customer_common_elements()
+    
+    css_list = common_elements["css_list"]
+
+    javascript_list = common_elements["javascript_list"]
+
+    all_btn = common_elements["all_btn"]
+
+    html.new_header("Device Group Management", "device_group_management_view.py", all_btn, css_list, javascript_list)
+
+    customer_string = """
+        <table width="100%" class=" main_tbl" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+            <tr>
+              <!-- <td><input type="button" id="add_device_group_button" style="float:right; margin-right: 20px; margin-top:20px;" value="Add Device Group"></td> -->
+              <td><a id="add_device_group_button" href="#"><img src="images/add-gray.png" alt="" style="margin-right: 30px; margin-top: 30px;" border="0" align="right" id=""></a></td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="device_group_table" width="100%" class="deatil_tbl content_tbl" border="0" cellspacing="0" cellpadding="0">
+                      <thead>
+                        <tr>
+                          <th>Device Group</th>
+                          <th>Device Type</th>
+                          <th>No of Devices</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- <tr>
+                          <td>Garmin_GPSTracker_Ford</td>
+                          <td>Garmin_GPSTracker</td>
+                          <td>10</td>
+                          <td>Manage</td>
+                        </tr>
+                         -->
+                    </tbody>
+                  </table>
+                </td>
+            </tr>
+            <tr class="hidden-on-start" id="add_new_device_row">
+              <td>
+                <table id="" width="100%" class="content_tbl" border="0" cellpadding="10" cellspacing="10">
+                  <thead>
+                    <tr>
+                      <th width="25%">Add New Device Group</th>
+                      <th width="25%">&nbsp;</th>
+                      <th width="25%">&nbsp;</th>
+                      <th width="25%">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="label"><strong>Device Group: </strong></td>
+                      <td><input type="text" id="new_device_group_name" class="txt_bx"></td>
+                    </tr>
+                    <tr>
+                      <td class="label"><strong>Device Type: </strong></td>
+                      <td>
+                        <select id="new_device_type_select_box" class="txt_bx">
+                          <option>Hallo1</option>
+                          <option>Hallo2</option>
+                        </select>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                    <div id="add_selected_services_list" class="scroll height_250 hidden-on-start">
+                        <table id="add_selected_services_list_table" width="100%" class="content_tbl " border="0" cellpadding="10" cellspacing="10">
+                          <thead>
+                          <tr>
+                            <th>Garmin_GPSTracker</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" id="save_new_device_group_button" class="btn" value="Save"></td>
+                      <td><input type="button" id="cancel_new_device_group_button" class="btn" value="Cancel"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr class="hidden-on-start" id="manage_device_row">
+              <td>
+                <table id="" width="100%" class="content_tbl" border="0" cellpadding="10" cellspacing="10">
+                  <thead>
+                    <tr>
+                      <th><strong>Manage Device Group: </strong></th>
+                    </tr>
+                  
+                  </thead>
+                  <tbody>
+                    <tr id="device_group_name_row">
+                      <td><strong>Device Group: </strong></td>
+                      <td>Garmin_GPSTracker_Ford</td>
+                    </tr>
+                    <tr id="device_type_name_row">
+                      <td><strong>Device Type: </strong></td>
+                      <td>Garmin_GPSTracker</td>
+                    </tr>
+                    <tr>
+                      <td width="50%">
+                        <div class="scroll height_250">
+                        <table id="selected_device_group_table" width="100%" class="content_tbl" border="0" cellpadding="10" cellspacing="10" style="vertical-align:top">
+                          <thead>
+                          <tr id="selected_device_group_table_head">
+                            <th>Selected Garmin_GPSTracker</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                         
+                          </tbody>
+                        </table>
+                        </div>
+                        
+                      </td>
+                      <td width="50%">
+                        <div class="scroll height_250">
+                        <table id="all_service_list_tables" width="100%" class="content_tbl " border="0" cellpadding="10" cellspacing="10">
+                          <thead>
+                          <tr>
+                            <th>Garmin_GPSTracker</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" id="save_manage_device_group" class="btn" value="Save">
+                      <input type="button" id="cancel_manage_device_group" class="btn" value="Cancel"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            <!--   <td>
+                <table id="" width="100%" class="content_tbl" border="0" cellspacing="10" cellpadding="10">
+                  <tbody>
+                    <tr>
+                      <td><strong>Garmin_GPSTracker</strong></td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" checked class="txt_bx">Tracker_001</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" class="txt_bx">Tracker_001</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td> -->
+            </tr>
+            
+          </tbody></table>
+    
+    """
+    html.write(customer_string)
+    html.write("""
+        <script>
+            device_group_management_view();
+        </script>
+        """)
+    html.new_footer()
+
+#############################END: new form integration for device group management
 
 def customer_edit_view(h):
     """
